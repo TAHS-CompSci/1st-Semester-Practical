@@ -6,25 +6,34 @@ Project description
 # Your code goes below
 import random 
 
-def hiLo_game(): # This defines what is going to happen and what it is going to be doing 
-    x = random.randint(1, 100)   # This chooses a random number between 1-100 
+def hiLo_game(): # This defines what it will be doing 
+    x = random.randint(1, 100)  # This chooses a random number  
+    tries = 1
     print(x)
-    guess = int(input ('guess a number from 1-100: ')) # This prints guess a number 
-    
-    if guess < x: 
-        print("guess too low!") # If the guess is low, it will print guess too low 
-
-    if guess > x: 
-        print("guess too high!") # If the guess is high, it will print guess too high 
-
-    if guess == x: 
-        
-        print ("winner!, want to play again?") # If you guess the number correctly, it will print winner! Then, you can choose to play again or not play again #(That is down here) 
-        answer = input ("Yes or No: ")    
-        if answer == "Yes":
-            hiLo_game()
-        if answer == "No":
-            return
+    booli = True
+    guess = int(input ('guess a number from 1-100: '))
+    while booli == True:
+        if guess < x: 
+            print("guess too low!")   # These are the loops 
+            tries += 1
+            guess = int(input ('guess a number from 1-100: '))
+        if guess > x: 
+            print("guess too high!")   # Guess too low, it will print too low. Guess is too high, it will print guess too high. Ig guess is correct, it will print winner and we can choose if we want to play again. 
+            tries =+ 1
+            guess = int(input ('guess a number from 1-100: '))
+        if guess == x: 
+            print ("winner!, want to play again?") 
+            tries += 1
+            booli = False
+        if tries == 10:
+            print("You Lose")
+            booli = False
+    print("Would you like to play again")
+    answer = input ("Yes or No: ")    
+    if answer == "Yes":
+        hiLo_game()
+    if answer == "No":
+        return
     
 hiLo_game() 
       
